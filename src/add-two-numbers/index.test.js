@@ -58,7 +58,7 @@ describe('addTwoNumbers', () => {
     expect(fromListToArray(result)).toEqual([8, 9, 9, 9, 0, 0, 0, 1]);
   });
 
-  test('it should return ', () => {
+  test('it should return 6640000000000000000000000000001', () => {
     const l1 = fromArrayToList([1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]);
     const l2 = fromArrayToList([5,6,4]);
 
