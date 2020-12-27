@@ -5,13 +5,22 @@ class ListNode {
   }
 }
 
+const pow = (base, exponent) => {
+  let result = 1n;
+  for (let i = 0; i < exponent; i++) {
+    result = result * base;
+  }
+
+  return result;
+}
+
 const getNumber = (l) => {
   let currentNode = l;
-  let number = 0;
+  let number = 0n;
   let i = 0;
 
   while(currentNode) {
-    number = currentNode.val * Math.pow(10, i) + number;
+    number = BigInt(currentNode.val) * pow(10n, i) + number;
     currentNode = currentNode.next;
     i++;
   }
@@ -20,13 +29,13 @@ const getNumber = (l) => {
 };
 
 const getDigits = (number) => {
-  if (number === 0) return [0];
+  if (number == 0) return [0];
   let reminder = number;
   const digits = [];
 
   while (reminder > 0) {
-    digits.unshift(reminder % 10);
-    reminder = Math.floor(reminder / 10);
+    digits.unshift(Number(reminder % 10n));
+    reminder = reminder / 10n;
   }
 
   return digits;

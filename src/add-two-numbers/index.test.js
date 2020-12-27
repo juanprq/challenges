@@ -57,4 +57,12 @@ describe('addTwoNumbers', () => {
     const result = addTwoNumbers(l1, l2);
     expect(fromListToArray(result)).toEqual([8, 9, 9, 9, 0, 0, 0, 1]);
   });
+
+  test('it should return ', () => {
+    const l1 = fromArrayToList([1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]);
+    const l2 = fromArrayToList([5,6,4]);
+
+    const result = addTwoNumbers(l1, l2);
+    expect(fromListToArray(result)).toEqual([6,6,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1]);
+  });
 });
