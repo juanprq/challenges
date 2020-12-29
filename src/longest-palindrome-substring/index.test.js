@@ -6,7 +6,7 @@ describe('longestPalindrome', () => {
   });
 
   it('should return "bab"', () => {
-    expect(longestPalindrome('babad')).toEqual('bab');
+    expect(longestPalindrome('babad')).toEqual('aba');
   });
 
   it('should return "bb"', () => {
@@ -18,6 +18,6 @@ describe('longestPalindrome', () => {
   });
 
   it('should return "a"', () => {
-    expect(longestPalindrome('ac')).toEqual('a');
+    expect(longestPalindrome('ac')).toEqual('c');
   });
 });
