@@ -6,10 +6,12 @@ const findMedianSortedArrays = (a1, a2) => {
   let j = 0;
 
   while (i < a1.length || j < a2.length) {
-    const a = a1[i] || Infinity;
-    const b = a2[j] || Infinity;
+    const a = a1[i] !== undefined ? a1[i] : Infinity;
+    const b = a2[j] !== undefined ? a2[j] : Infinity;
 
-    if (a && a < b) {
+    if (j === 2) throw new Error('dry');
+
+    if (a !== undefined && a < b) {
       result.push(a);
       i++;
     } else {

@@ -19,12 +19,12 @@ describe('medianOfTwoSortedArrays', () => {
     expect(findMedianSortedArrays(a1, a2)).toEqual(2.5);
   });
 
-  // test('it should return 0', () => {
-  //   const a1 = [0];
-  //   const a2 = [0];
+  test('it should return 0', () => {
+    const a1 = [0];
+    const a2 = [0];
 
-  //   expect(findMedianSortedArrays(a1, a2)).toEqual(0);
-  // });
+    expect(findMedianSortedArrays(a1, a2)).toEqual(0);
+  });
 
   test('it should return 1', () => {
     const a1 = [];
