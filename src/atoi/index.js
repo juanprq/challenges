@@ -16,16 +16,16 @@ const myAtoi = (string) => {
 
   let result = 0;
   for (let i = 0; i < number.length; i++) {
-    const digit = number.charAt(i);
+    const digit = number.charCodeAt(i) - '0'.charCodeAt(0);
 
-    const power = Math.pow(10, number.length - i - 1);
-    result = result + digit * power;
+    if (result > MAX / 10 || (result === Math.floor(MAX / 10) && digit > MAX % 10)) {
+      return negative === -1 ? MIN : MAX;
+    }
+
+    result = result * 10 + digit;
   }
 
-  result = result * negative;
-  result = Math.min(result, MAX);
-  result = Math.max(result, MIN);
-  return result;
+  return result * negative;
 };
 
 module.exports = myAtoi;
