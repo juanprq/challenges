@@ -20,4 +20,8 @@ describe('reverseInteger', () => {
   it('should return 0', () => {
     expect(reverseInteger(0)).toEqual(0);
   });
+
+  it('should return 0', () => {
+    expect(reverseInteger(1534236469)).toEqual(0);
+  });
 });
