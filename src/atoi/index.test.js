@@ -24,4 +24,8 @@ describe('atoi', () => {
   it('should return -2147483648', () => {
     expect(atoi('-91283472332')).toEqual(- Math.pow(2, 31));
   });
+
+  it('should return 12345678', () => {
+    expect(atoi('  0000000000012345678')).toEqual(12345678);
+  });
 });
