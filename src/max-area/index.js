@@ -1,12 +1,16 @@
 const maxArea = (numbers) => {
+  let lowerPointer = 0;
+  let upperPointer = numbers.length - 1;
   let max = 0;
 
-  for (let i = 0; i < numbers.length - 1; i++) {
-    for (let j = i + 1; j < numbers.length; j++) {
-      const width = j - i;
-      const height = Math.min(numbers[i], numbers[j]);
+  while (lowerPointer < upperPointer) {
+    const area = Math.min(numbers[lowerPointer], numbers[upperPointer]) * (upperPointer - lowerPointer);
+    max = Math.max(max, area);
 
-      max = Math.max(max, width * height);
+    if (numbers[lowerPointer] > numbers[upperPointer]) {
+      upperPointer--;
+    } else {
+      lowerPointer++;
     }
   }
 
