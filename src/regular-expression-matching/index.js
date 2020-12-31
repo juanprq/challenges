@@ -1,5 +1,17 @@
 const isMatch = (string, pattern) => {
+  const memo = [];
+  for (let i = 0; i <= string.length; i++) {
+    for (let j = 0; j <= pattern.length; j++) {
+      if (memo[i]) {
+        memo[i][j] = undefined;
+      } else {
+        memo[i] = [undefined];
+      }
+    }
+  }
+
   const iterate = (stringIndex = 0, patternIndex = 0) => {
+    if (memo[stringIndex] && memo[stringIndex][patternIndex] !== undefined) return memo[stringIndex][patternIndex];
     if (patternIndex === pattern.length) {
       // check if we consumed all the string or not
       return stringIndex === string.length;
@@ -17,6 +29,7 @@ const isMatch = (string, pattern) => {
       result = firstMatch && iterate(stringIndex + 1, patternIndex + 1);
     }
 
+    memo[stringIndex][patternIndex] = result;
     return result;
   };
 
