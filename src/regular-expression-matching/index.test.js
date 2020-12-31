@@ -10,7 +10,7 @@ describe('isMatch', () => {
   });
 
   it('should return true', () => {
-    expect(isMatcn('aa', 'a*')).toBe(true);
+    expect(isMatch('aa', 'a*')).toBe(true);
   });
 
   it('should return true', () => {
