@@ -1,31 +1,26 @@
 const isMatch = (string, pattern) => {
-  let patternIndex = 0;
-  let stringIndex = 0;
-
-  while(patternIndex < pattern.length) {
-    let currentPattern = pattern.charAt(patternIndex);
-    patternIndex++;
-    if (pattern.charAt(patternIndex) === '*') {
-      currentPattern += pattern.charAt(patternIndex);
-      patternIndex++;
+  const iterate = (stringIndex = 0, patternIndex = 0) => {
+    if (patternIndex === pattern.length) {
+      // check if we consumed all the string or not
+      return stringIndex === string.length;
     }
 
-    if (currentPattern === '.*') return true;
-    if (currentPattern.length > 1) {
-      while(string.charAt(stringIndex) === currentPattern.charAt(0)) {
-        stringIndex++
-      }
-    } else if(currentPattern === '.'){
-      if (string.charAt(stringIndex)) {
-        stringIndex++;
-      }
+    let result;
+    const currentPattern = pattern.charAt(patternIndex);
+    const firstMatch = stringIndex < string.length
+      && (string.charAt(stringIndex) === currentPattern || currentPattern === '.');
+
+    if (pattern.charAt(patternIndex + 1) === '*') {
+      result = iterate(stringIndex, patternIndex + 2) // this is for ignoring the current char
+        || firstMatch && iterate(stringIndex + 1, patternIndex); // or consume the char without going to the next pattern
     } else {
-      if (currentPattern !== string.charAt(stringIndex)) return false;
-      stringIndex++;
+      result = firstMatch && iterate(stringIndex + 1, patternIndex + 1);
     }
-  }
 
-  return stringIndex === string.length;
+    return result;
+  };
+
+  return iterate();
 };
 
 module.exports = isMatch;
