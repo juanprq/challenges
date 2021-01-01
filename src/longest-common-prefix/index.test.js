@@ -14,4 +14,14 @@ describe('longestCommonPrefix', () => {
     const input = ['dog', 'racecar', 'car'];
     expect(longestCommonPrefix(input)).toEqual('');
   });
+
+  it('should return ""', () => {
+    const input = [];
+    expect(longestCommonPrefix(input)).toEqual('');
+  });
+
+  it('should return "a"', () => {
+    const input = ['a'];
+    expect(longestCommonPrefix(input)).toEqual('a');
+  });
 });
