@@ -7,7 +7,7 @@ describe('threeSum', () => {
 
   it('should return [[-1, -1, 2], [-1, 0, 1]]', () => {
     const input = [-1, 0, 1, 2, -1, -4];
-    expect(threeSum(input)).toEqual([[-1, 0, 1], [-1, -1, 2]]);
+    expect(threeSum(input)).toEqual([[-1, -1, 2], [-1, 0, 1]]);
   });
 
   it('should return []', () => {
@@ -16,5 +16,9 @@ describe('threeSum', () => {
 
   it('should return []', () => {
     expect(threeSum([0])).toEqual([]);
+  });
+
+  it('should return [[0, 0, 0]]', () => {
+    expect(threeSum([0, 0, 0])).toEqual([[0, 0, 0]]);
   });
 });
