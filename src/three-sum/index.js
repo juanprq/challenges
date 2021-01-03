@@ -1,25 +1,48 @@
+const findTwoNumbers = (numbers, target, ommitIndex) => {
+  const memo = numbers
+    .reduce(
+      (accum, number, i) => {
+        if (ommitIndex === i) return accum;
+        if (accum[number]) {
+          return { ...accum, [number]: [...accum[number], i] };
+        } else {
+          return { ...accum, [number]: [i] };
+        }
+      }, {},
+    );
+
+  let results = [];
+
+  for (let i = 0; i < numbers.length; i++) {
+    if (i === ommitIndex) continue;
+    const complement = target - numbers[i];
+
+    const possibilities = memo[complement] || [];
+    possibilities.forEach((idx) => {
+      if (idx !== i) {
+        results.push([numbers[i], numbers[idx]]);
+      }
+    });
+  }
+
+  return results;
+};
+
 const threeSum = (numbers)  => {
   if (numbers.length < 3) return [];
   const result = new Set();
-  // the first naive solution could be O(n**3)
-  for (let i = 0; i < numbers.length - 2; i++) {
-    for (let j = i + 1; j < numbers.length - 1; j++) {
-      for (let k = j + 1; k < numbers.length; k++) {
-        if (numbers[i] + numbers[j] + numbers[k] === 0) {
-          result.add(
-            [numbers[i], numbers[j], numbers[k]]
-              .sort((a, b) => a - b)
-              .join(',')
-          );
-        }
-      }
-    }
-  }
 
-  console.log(
-    [...result]
-      .map(row => row.split(',').map(v => parseInt(v, 10)))
-  );
+  for(let i = 0; i < numbers.length; i++) {
+    const complement = 0 - numbers[i];
+    const otherResults = findTwoNumbers(numbers, complement, i);
+    otherResults.forEach((complements) => {
+      result.add(
+        [numbers[i], ...complements]
+          .sort((a, b) => a - b)
+          .join(',')
+      );
+    });
+  }
 
   return [...result]
     .map(row => row.split(',').map(v => parseInt(v, 10)));
