@@ -6,7 +6,11 @@ describe('letterCombinations', () => {
   });
 
   it('should return ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"]', () => {
-    const result = ['ad', 'ae', 'af', 'bd', 'be', 'bf', 'cd', 'ce', 'cf'];
+    const result = [
+      'ad', 'bd', 'cd',
+      'ae', 'be', 'ce',
+      'af', 'bf', 'cf'
+    ];
     expect(letterCombinations('23')).toEqual(result);
   });
 
