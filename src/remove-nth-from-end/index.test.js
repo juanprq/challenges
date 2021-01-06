@@ -54,6 +54,12 @@ describe('removeNthFromEnd', () => {
     const result = listToArray(removeNthFromEnd(input, 1));
 
     expect(result).toEqual([1]);
+  });
 
+  it('should return [2]', () => {
+    const input = arrayToList([1, 2]);
+    const result = listToArray(removeNthFromEnd(input, 2));
+
+    expect(result).toEqual([2]);
   });
 });
