@@ -7,7 +7,7 @@ class ListNode {
 
 const mergeTwoLists = (l1, l2) => {
   let currentNode;
-  let head;
+  let head = null;
   let currentLeft = l1;
   let currentRight = l2;
 
