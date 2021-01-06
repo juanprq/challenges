@@ -6,23 +6,22 @@ class ListNode {
 }
 
 const removeNthFromEnd = (head, n) => {
-  const references = [];
   let i = 0;
   let current = head;
+  let prev = head;
 
   while(current) {
-    references[i] = current;
     current = current.next;
+    if (i > n) {
+      prev = prev.next;
+    }
+
     i++;
   }
 
-  const prev = references[i - n - 1];
-
-  if (!prev && i === 1) {
-    return null;
-  } else if (!prev) {
+  if (i === n) {
     head = head.next;
-  } if (prev && prev.next) {
+  } else if (prev.next) {
     prev.next = prev.next.next;
   }
 
