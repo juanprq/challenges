@@ -1,4 +1,5 @@
-const mergeKList = require('./index');
+const mergeKLists = require('./index');
+const { ListNode } = require('./index');
 
 const arrayToList = (array) => {
   let head;
@@ -31,27 +32,27 @@ const listToArray = (head) => {
 
 describe('mergeKList', () => {
   it('should be a function', () => {
-    expect(mergeKList).toBeInstance(Function);
+    expect(mergeKLists).toBeInstanceOf(Function);
   });
 
   it('should return [1, 1, 2, 3, 4, 4, 5, 6]', () => {
     const input = [
       arrayToList([1, 4, 5]),
-      arrayToList([1, 2, 3]),
+      arrayToList([1, 3, 4]),
       arrayToList([2, 6]),
     ];
     const result = [1, 1, 2, 3, 4, 4, 5, 6];
 
-    expect(listToArray(mergeKList(input))).toEqual(result);
+    expect(listToArray(mergeKLists(input))).toEqual(result);
   });
 
   it('should return []', () => {
     const input = [];
-    expect(listToArray(mergeKList(input))).toEqual([]);
+    expect(listToArray(mergeKLists(input))).toEqual([]);
   });
 
   it('should return []', () => {
     const input = [null];
-    expect(listToArray(mergeKList(input))).toEqual([]);
+    expect(listToArray(mergeKLists(input))).toEqual([]);
   });
 });
