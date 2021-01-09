@@ -1,15 +1,13 @@
 const removeDuplicates = (nums) => {
-  let currentIndex = 1;
-
-  while (currentIndex < nums.length) {
-    if (nums[currentIndex] === nums[currentIndex - 1]) {
-      nums.splice(currentIndex, 1);
-    } else {
-      currentIndex++;
+  let i = 0;
+  for (let j = 1; j < nums.length; j++) {
+    if (nums[j] !== nums[i]) {
+      i++;
+      nums[i] = nums[j];
     }
   }
 
-  return nums.length;
+  return i + 1;
 };
 
 module.exports = removeDuplicates;
