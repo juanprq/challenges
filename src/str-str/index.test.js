@@ -16,4 +16,12 @@ describe('strStr', () => {
   it('should return 0', () => {
     expect(strStr('', '')).toEqual(0);
   });
+
+  it('should return 0', () => {
+    expect(strStr('a', 'a')).toEqual(0);
+  });
+
+  it('should return -1', () => {
+    expect(strStr('aaa', 'aaaa')).toEqual(-1);
+  });
 });
