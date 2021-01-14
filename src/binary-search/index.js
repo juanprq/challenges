@@ -2,7 +2,6 @@ const binarySearch = (nums, target) => {
   let l = 0;
   let r = nums.length - 1;
 
-  let i = 0;
   while(l <= r) {
     let mid = Math.floor((l + r) / 2);
     if (nums[mid] === target) return mid;
@@ -12,9 +11,6 @@ const binarySearch = (nums, target) => {
     } else {
       l = mid + 1;
     }
-
-    i++
-    if (i > 100) return -1;
   }
 
   return -1;
