@@ -1,23 +1,27 @@
 const countAndSay = (n) => {
-  if (n === 1) return '1';
+  let currentResult = '1';
 
-  const prevResult = countAndSay(n - 1);
-  let i = 0;
-  let result = '';
-  while (i < prevResult.length) {
-    let count = 1;
-    const currentChar = prevResult.charAt(i);
+  for (let i = 1; i < n; i++) {
+    let iterationResult = '';
+    let j = 0;
 
-    while (currentChar === prevResult.charAt(i + 1)) {
-      count++;
-      i++;
+    while (j < currentResult.length) {
+      let count = 1;
+      const currentChar = currentResult.charAt(j);
+
+      while (currentChar === currentResult.charAt(j + 1)) {
+        count++;
+        j++;
+      }
+
+      iterationResult += `${count}${currentChar}`;
+      j++;
     }
 
-    result += `${count}${currentChar}`;
-    i++;
+    currentResult = iterationResult;
   }
 
-  return result;
+  return currentResult;
 };
 
 module.exports = countAndSay;
