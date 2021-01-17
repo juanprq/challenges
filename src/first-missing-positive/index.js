@@ -12,6 +12,7 @@ const firstMissingPositive = (nums) => {
     if (!count[i]) return i;
   }
 
+  if (max < 1) return 1;
   return max + 1;
 };
 

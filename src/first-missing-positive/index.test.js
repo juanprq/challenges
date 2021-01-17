@@ -19,4 +19,14 @@ describe('firstMissingPositive', () => {
     const nums = [7, 8, 9, 11, 12];
     expect(firstMissingPositive(nums)).toEqual(1);
   });
+
+  it('should return 1', () => {
+    const nums = [];
+    expect(firstMissingPositive(nums)).toEqual(1);
+  });
+
+  it('should return 1, ()', () => {
+    const nums = [-5];
+    expect(firstMissingPositive(nums)).toEqual(1);
+  });
 });
