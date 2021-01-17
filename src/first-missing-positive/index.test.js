@@ -17,7 +17,6 @@ describe('firstMissingPositive', () => {
 
   it('should return 1', () => {
     const nums = [7, 8, 9, 11, 12];
-;
     expect(firstMissingPositive(nums)).toEqual(1);
   });
 });
