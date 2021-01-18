@@ -1,19 +1,33 @@
 const firstMissingPositive = (nums) => {
-  const count = nums.reduce((accum, value) => ({ ...accum, [value]: true }), {});
-
-  let min = Infinity;
+  let i = 0;
   let max = -Infinity;
-  nums.forEach(value => {
-    max = Math.max(max, value);
-    min = Math.min(min, value);
-  });
 
-  for (let i = 1; i < max; i++) {
-    if (!count[i]) return i;
+  while (i < nums.length) {
+    max = Math.max(max, nums[i]);
+    if (nums[i] < 0) {
+      i++;
+      continue;
+    }
+
+    const currentIndex = nums[i] - 1;
+    if (currentIndex > nums.length) {
+      nums[i] = 0;
+    } else if (nums[currentIndex] > 0) {
+      nums[i] = nums[currentIndex]
+    } else {
+      nums[i] = 0;
+      i++;
+    }
+    nums[currentIndex] = -1;
   }
 
-  if (max < 1) return 1;
-  return max + 1;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === 0) {
+      return i + 1;
+    }
+  }
+
+  return Math.max(max + 1, 1);
 };
 
 module.exports = firstMissingPositive;
