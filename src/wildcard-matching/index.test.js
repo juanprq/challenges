@@ -39,4 +39,18 @@ describe('isMatch', () => {
 
     expect(isMatch(s, p)).toBe(false);
   });
+
+  it('should return false', () => {
+    const s = '';
+    const p = '******';
+
+    expect(isMatch(s, p)).toBe(true);
+  });
+
+  it('should return true', () => {
+    const s = 'aaabababaaabaababbbaaaabbbbbbabbbbabbbabbaabbababab';
+    const p = '*ab***ba**b*b*aaab*b';
+
+    expect(isMatch(s, p)).toBe(true);
+  });
 });
