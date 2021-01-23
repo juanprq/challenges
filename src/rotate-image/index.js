@@ -1,7 +1,6 @@
 const rotate = (matrix) => {
   const n = matrix.length;
-  let i = 0;
-  while (i <= n - i - 1) {
+  for (let i = 0; i < n - i; i++) {
     for (let j = i; j < n - i - 1; j++) {
       let aux;
       let aux2;
@@ -30,8 +29,6 @@ const rotate = (matrix) => {
       aux = matrix[target[0]][target[1]];
       matrix[target[0]][target[1]] = aux2;
     }
-
-    i++;
   }
 
   return matrix;
