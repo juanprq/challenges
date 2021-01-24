@@ -6,7 +6,7 @@ describe('balanceCandyBars', () => {
   });
 
   it('should return [[7, 5], [3, 1]]', () => {
-    const alice = [7, 3, 6, 4];
+    const alice = [7, 3, 2, 4];
     const bob = [6, 1, 5];
 
     expect(balanceCandyBars(alice, bob)).toEqual([[7, 5], [3, 1]]);
