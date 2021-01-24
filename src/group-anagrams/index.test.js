@@ -6,8 +6,8 @@ describe('groupAnagrams', () => {
   });
 
   it('should return 3 groups', () => {
-    const input = ['geat', 'tea', 'tan', 'ate', 'nat', 'bat'];
-    const result = [['bat'], ['nat', 'tan'], ['ate', 'eat', 'tea']];
+    const input = ['eat', 'tea', 'tan', 'ate', 'nat', 'bat'];
+    const result = [[ 'eat', 'tea', 'ate' ], [ 'tan', 'nat' ], [ 'bat' ]];
 
     expect(groupAnagrams(input)).toEqual(result);
   });
