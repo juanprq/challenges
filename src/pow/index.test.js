@@ -13,7 +13,7 @@ describe('myPow', () => {
     expect(myPow(2.1, 3)).toEqual(9.26100);
   });
 
-  it('should return ', () => {
+  it('should return 0.25', () => {
     expect(myPow(2.0, -2)).toEqual(0.25);
   });
 });
