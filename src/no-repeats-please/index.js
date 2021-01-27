@@ -15,12 +15,19 @@ const generatePermutations = (string) => {
   return results;
 };
 
+const noRepeatingChars = (string) => {
+  for (let i = 1; i < string.length; i++) {
+    if (string.charAt(i) === string.charAt(i - 1)) return false;
+  }
+
+  return true;
+};
+
 const permAlone = (string) => {
-  const permutations = generatePermutations('abcd');
+  const permutations = generatePermutations(string)
+    .filter(noRepeatingChars);
 
-  console.log(permutations);
-
-  return 0;
+  return permutations.length;
 };
 
 module.exports = permAlone;
