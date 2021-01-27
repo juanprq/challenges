@@ -3,13 +3,14 @@ const generatePermutations = (string) => {
     return [string];
   };
 
-  let results = [];
+  const results = [];
   for (let i = 0; i < string.length; i++) {
     const char = string.charAt(i);
     const remaining = string.slice(0, i).concat(string.slice(i + 1));
 
-    const currentPermutations = generatePermutations(remaining).map(p => char + p);
-    results = [...results, ...currentPermutations];
+    generatePermutations(remaining).forEach(permutation => {
+      results.push(char + permutation);
+    });
   }
 
   return results;
