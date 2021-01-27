@@ -1,3 +1,11 @@
+const noRepeatingChars = (string) => {
+  for (let i = 1; i < string.length; i++) {
+    if (string.charAt(i) === string.charAt(i - 1)) return false;
+  }
+
+  return true;
+};
+
 const generatePermutations = (string) => {
   if (string.length < 2) {
     return [string];
@@ -8,27 +16,15 @@ const generatePermutations = (string) => {
     const char = string.charAt(i);
     const remaining = string.slice(0, i).concat(string.slice(i + 1));
 
-    generatePermutations(remaining).forEach(permutation => {
-      results.push(char + permutation);
-    });
+    generatePermutations(remaining)
+      .map(permutation => char + permutation)
+      .filter(noRepeatingChars)
+      .forEach(permutation => results.push(permutation));
   }
 
   return results;
 };
 
-const noRepeatingChars = (string) => {
-  for (let i = 1; i < string.length; i++) {
-    if (string.charAt(i) === string.charAt(i - 1)) return false;
-  }
-
-  return true;
-};
-
-const permAlone = (string) => {
-  const permutations = generatePermutations(string)
-    .filter(noRepeatingChars);
-
-  return permutations.length;
-};
+const permAlone = (string) => generatePermutations(string).length;
 
 module.exports = permAlone;
