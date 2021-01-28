@@ -22,14 +22,14 @@ describe('pairwise', () => {
   });
 
   it('should return 1', () => {
-    expect([1, 1, 1], 2).toEqual(1);
+    expect(pairwise([1, 1, 1], 2)).toEqual(1);
   });
 
   it('should return 10', () => {
-    expect([0, 0, 0, 0, 1, 1], 1).toEqual(10);
+    expect(pairwise([0, 0, 0, 0, 1, 1], 1)).toEqual(10);
   });
 
   it('should return 0', () => {
-    expect([], 100).toEqual(0);
+    expect(pairwise([], 100)).toEqual(0);
   });
 });
