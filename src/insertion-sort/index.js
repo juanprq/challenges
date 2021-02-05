@@ -1,5 +1,5 @@
 const insertionSort = (array) => {
-  for (let i = 1; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     const current = array[i];
 
     let j = i - 1;
