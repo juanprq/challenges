@@ -16,7 +16,7 @@ describe('stack', () => {
   });
 
   it('should have a pop method', () => {
-    expect(stack.pop).toBeInstanceOf(pop);
+    expect(stack.pop).toBeInstanceOf(Function);
   });
 
   it('should have a peek method', () => {
