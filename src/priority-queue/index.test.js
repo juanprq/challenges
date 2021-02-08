@@ -31,11 +31,44 @@ describe('PriorityQueue', () => {
     expect(priorityQueue.isEmpty).toBeInstanceOf(Function);
   });
 
-// Your PriorityQueue class should correctly keep track of the current number of items using the size method as items are enqueued and dequeued.
+  it('should keep track of the current number of items enqueued', () => {
+    priorityQueue.enqueue(['coin', 1]);
+    priorityQueue.enqueue(['stick', 2]);
+    priorityQueue.enqueue(['pencil', 1]);
 
-// The front method should return the correct item at the front of the queue as items are enqueued and dequeued.
+    expect(priorityQueue.size()).toEqual(3);
 
-// The isEmpty method should return true when the queue is empty.
+    priorityQueue.dequeue();
+    expect(priorityQueue.size()).toEqual(2);
 
-// The priority queue should return items with a higher priority before items with a lower priority and return items in first-in-first-out order otherwise.
+    priorityQueue.dequeue();
+    expect(priorityQueue.size()).toEqual(1);
+  });
+
+  it('should return correct item in the front method', () => {
+    priorityQueue.enqueue(['coin', 1]);
+    priorityQueue.enqueue(['stick', 2]);
+    priorityQueue.enqueue(['pencil', 1]);
+
+    expect(priorityQueue.front()).toEqual('coin');
+    priorityQueue.dequeue();
+    expect(priorityQueue.front()).toEqual('pencil');
+  });
+
+  it('should return true if the queue is empty', () => {
+    expect(priorityQueue.isEmpty()).toBe(true);
+
+    priorityQueue.enqueue(['test', 1]);
+    expect(priorityQueue.isEmpty()).toBe(false);
+  });
+
+  it('should return items with a higher priority before items with lower priority and return items in fifo', () => {
+    priorityQueue.enqueue(['coin', 1]);
+    priorityQueue.enqueue(['stick', 2]);
+    priorityQueue.enqueue(['pencil', 1]);
+
+    expect(priorityQueue.dequeue()).toEqual('coin');
+    expect(priorityQueue.dequeue()).toEqual('pencil');
+    expect(priorityQueue.dequeue()).toEqual('stick');
+  });
 });
