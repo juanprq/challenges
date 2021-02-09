@@ -2,24 +2,18 @@ class PriorityQueue {
   collection = [];
 
   enqueue = ([item, priority]) => {
-    this.collection.push([item, priority]);
+    const index = this.collection.findIndex(([, currentPriority]) => currentPriority > priority);
+    if (index !== -1) {
+      this.collection.splice(index, 0, [item, priority]);
+    } else {
+      this.collection.push([item, priority]);
+    }
   }
 
   dequeue = () => {
-    const frontItem = this.front();
-    let frontItemIndex;
-    for (let i = 0; i < this.collection.length; i++) {
-      if (this.collection[i][0] === frontItem) {
-        frontItemIndex = i;
-        break;
-      }
-    }
-
-    if (frontItemIndex !== undefined) {
-      this.collection = this.collection.slice(0, frontItemIndex).concat(this.collection.slice(frontItemIndex + 1));
-    }
-
-    return frontItem;
+    const item = this.collection.shift();
+    if (item) return item[0];
+    return null;
   }
 
   size = () => {
@@ -27,13 +21,9 @@ class PriorityQueue {
   }
 
   front = () => {
-    const [item] = this.collection
-      .reduce((minPriority, current) => {
-        if (current[1] < minPriority[1]) return current;
-        return minPriority;
-      });
-
-    return item;
+    const item = this.collection[0];
+    if (item) return item[0];
+    return null;
   }
 
 
