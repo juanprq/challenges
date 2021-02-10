@@ -17,13 +17,53 @@ describe('CircularQueue', () => {
   it('should have a dequeue method', () => {
     expect(circularQueue.dequeue).toBeInstanceOf(Function);
   });
-// The enqueue method should add items to the circular queue.
 
-// You should not enqueue items past the read pointer.
+  it('should add items to the circular queue', () => {
+    circularQueue.enqueue(1);
+    circularQueue.enqueue(2);
+    circularQueue.enqueue(3);
 
-// The dequeue method should dequeue items from the queue.
+    expect(circularQueue.print()).toEqual([1, 2, 3, null, null]);
+  });
 
-// After an item is dequeued, its position in the queue should be reset to null.
+  it('should add items to the circular queue', () => {
+    circularQueue.enqueue(1);
+    circularQueue.enqueue(2);
+    circularQueue.enqueue(3);
+    circularQueue.enqueue(4);
+    circularQueue.enqueue(5);
+    circularQueue.enqueue(6);
+    circularQueue.enqueue(7);
 
-// Trying to dequeue past the write pointer should return null and does not advance the write pointer.
+    expect(circularQueue.print()).toEqual([1, 2, 3, 4, 5]);
+  });
+
+  it('should dequeue items from the queue', () => {
+    circularQueue.enqueue(1);
+    circularQueue.enqueue(2);
+    circularQueue.enqueue(3);
+    circularQueue.enqueue(4);
+
+    expect(circularQueue.dequeue()).toEqual(1);
+    expect(circularQueue.dequeue()).toEqual(2);
+    expect(circularQueue.dequeue()).toEqual(3);
+  });
+
+  it('should set items to null when dequeued', () => {
+    circularQueue.enqueue(1);
+    circularQueue.enqueue(2);
+    circularQueue.enqueue(3);
+
+    expect(circularQueue.dequeue()).toEqual(1);
+    expect(circularQueue.print()).toEqual([null, 2, 3, null, null]);
+  });
+
+  it('should not dequeue items past the writer poiner', () => {
+    circularQueue.enqueue(1);
+    circularQueue.enqueue(2);
+
+    circularQueue.dequeue();
+    circularQueue.dequeue();
+    expect(circularQueue.dequeue()).toBe(null);
+  });
 });
