@@ -12,7 +12,10 @@ class CircularQueue {
       this.queue[this.write] = item;
 
       this.write = (this.write + 1) % (this.max + 1);
+      return item;
     }
+
+    return null;
   }
 
   dequeue() {
