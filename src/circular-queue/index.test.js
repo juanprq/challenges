@@ -65,5 +65,6 @@ describe('CircularQueue', () => {
     circularQueue.dequeue();
     circularQueue.dequeue();
     expect(circularQueue.dequeue()).toBe(null);
+    expect(circularQueue.print()).toEqual([null, null, null, null, null]);
   });
 });
