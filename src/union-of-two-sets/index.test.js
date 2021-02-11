@@ -23,6 +23,6 @@ describe('Set', () => {
     set2.add('c');
     set2.add('d');
 
-    expect(set.union(set2).print()).toEqual(['a', 'b', 'c', 'd']);
+    expect(set.union(set2).values()).toEqual(['a', 'b', 'c', 'd']);
   });
 });
