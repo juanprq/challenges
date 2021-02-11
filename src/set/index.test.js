@@ -29,7 +29,11 @@ describe('Set', () => {
 
   it('should have a has method', () => {
     expect(set.has).toBeInstanceOf(Function);
-  })
+  });
+
+  it('should have the union method', () => {
+    expect(set.union).toBeInstanceOf(Function);
+  });
 
   it('should not add duplicate values', () => {
     set.add(1);
@@ -72,5 +76,17 @@ describe('Set', () => {
     set.add(3);
 
     expect(set.size()).toEqual(3);
+  });
+
+  it('should make a union of two sets', () => {
+    set.add('a');
+    set.add('b');
+    set.add('c');
+
+    const set2 = new Set();
+    set2.add('c');
+    set2.add('d');
+
+    expect(set.union(set2).values()).toEqual(['a', 'b', 'c', 'd']);
   });
 });

@@ -32,6 +32,16 @@ class Set {
   size() {
     return this.values().length;
   }
+
+  union(set) {
+    const resultSet = new Set();
+    const add = (item) => resultSet.add(item);
+
+    this.values().forEach(add);
+    set.values().forEach(add);
+
+    return resultSet;
+  }
 }
 
 module.exports = Set;
