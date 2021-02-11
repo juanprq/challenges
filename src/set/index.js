@@ -42,6 +42,17 @@ class Set {
 
     return resultSet;
   }
+
+  intersection(set) {
+    const resultSet = new Set();
+    this.values().forEach(value => {
+      if (set.has(value)) {
+        resultSet.add(value);
+      }
+    });
+
+    return resultSet;
+  }
 }
 
 module.exports = Set;
