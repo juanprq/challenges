@@ -44,7 +44,7 @@ describe('Set', () => {
   });
 
   it('should have the isSubsetOf method', () => {
-    expect(set.isSubetOf).toBeInstanceOf(Function);
+    expect(set.isSubsetOf).toBeInstanceOf(Function);
   });
 
   it('should not add duplicate values', () => {
