@@ -39,6 +39,10 @@ describe('Set', () => {
     expect(set.intersection).toBeInstanceOf(Function);
   });
 
+  it('should have the difference method', () => {
+    expect(set.difference).toBeInstanceOf(Function);
+  });
+
   it('should not add duplicate values', () => {
     set.add(1);
     set.add(1);
@@ -107,5 +111,19 @@ describe('Set', () => {
     set2.add('e');
 
     expect(set.intersection(set2).values()).toEqual(['a', 'b']);
+  });
+
+  it('should make the difference of two sets', () => {
+    set.add('a');
+    set.add('b');
+    set.add('c');
+
+    const set2 = new Set();
+    set2.add('a');
+    set2.add('b');
+    set2.add('d');
+    set2.add('e');
+
+    expect(set.difference(set2).values()).toEqual(['c']);
   });
 });
