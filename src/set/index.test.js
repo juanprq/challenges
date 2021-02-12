@@ -131,7 +131,7 @@ describe('Set', () => {
     expect(set.difference(set2).values()).toEqual(['c']);
   });
 
-  it('should return true if a is subste of b', () => {
+  it('should return true if a is subset of b', () => {
     set.add('a');
     set.add('b');
 
@@ -141,6 +141,22 @@ describe('Set', () => {
     set2.add('c');
     set2.add('d');
 
-    expect(set.isSubsetOf(set2)).toEqual(true);
+    expect(set.isSubsetOf(set2)).toBe(true);
+  });
+
+  it('should return if a is not a subset of b', () => {
+    set.add('a');
+    set.add('b');
+    set.add('c');
+
+    const set2 = new Set();
+    set2.add('a');
+    set2.add('b');
+
+    expect(set.isSubsetOf(set2)).toBe(false);
+  });
+
+  it('should return true on a subset of an empty set', () => {
+    expect(set.isSubsetOf(new Set())).toBe(true);
   });
 });
