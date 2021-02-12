@@ -43,6 +43,10 @@ describe('Set', () => {
     expect(set.difference).toBeInstanceOf(Function);
   });
 
+  it('should have the isSubsetOf method', () => {
+    expect(set.isSubetOf).toBeInstanceOf(Function);
+  });
+
   it('should not add duplicate values', () => {
     set.add(1);
     set.add(1);
@@ -125,5 +129,18 @@ describe('Set', () => {
     set2.add('e');
 
     expect(set.difference(set2).values()).toEqual(['c']);
+  });
+
+  it('should return true if a is subste of b', () => {
+    set.add('a');
+    set.add('b');
+
+    const set2 = new Set();
+    set2.add('a');
+    set2.add('b');
+    set2.add('c');
+    set2.add('d');
+
+    expect(set.isSubsetOf(set2)).toEqual(true);
   });
 });
