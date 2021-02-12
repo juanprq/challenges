@@ -64,6 +64,12 @@ class Set {
 
     return resultSet;
   }
+
+  isSubsetOf(set) {
+    return this
+      .values()
+      .every(value => set.has(value));
+  }
 }
 
 module.exports = Set;
