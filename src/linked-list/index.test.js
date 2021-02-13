@@ -26,7 +26,7 @@ describe(LinkedList, () => {
     linkedList.add(1);
     linkedList.add(2);
 
-    expect(linkedList.head()).toEqual(1);
+    expect(linkedList.head().element).toEqual(1);
   });
 
   it('should count the correct ammount of nodes', () => {
