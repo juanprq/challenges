@@ -52,6 +52,34 @@ class LinkedList {
       }
     }
   }
+
+  isEmpty() {
+    return this.length === 0;
+  }
+
+  indexOf(element) {
+    let current = this.head();
+    let index = 0;
+
+    while(current !== null && current.element !== element) {
+      current = current.next
+      index++;
+    }
+
+    return current ? index : -1;
+  }
+
+  elementAt(index) {
+    let current = this.head();
+    let currentIndex = 0;
+
+    while (current !== null && currentIndex < index) {
+      current = current.next;
+      currentIndex++;
+    }
+
+    return current ? current.element : undefined;
+  }
 }
 
 module.exports = LinkedList;
