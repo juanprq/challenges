@@ -31,7 +31,27 @@ class LinkedList {
 
       currentNode.next = newNode;
     }
- }
+  }
+
+  remove(element) {
+    if (element === this.head().element) {
+      this.cHead = this.head().next;
+      this.length--;
+    } else {
+      let prev = this.head();
+      let current = prev.next;
+
+      while(current !== null && current.element !== element) {
+        prev = current;
+        current = current.next;
+      }
+
+      if (current) {
+        this.length--;
+        prev.next = current.next;
+      }
+    }
+  }
 }
 
 module.exports = LinkedList;
