@@ -138,4 +138,60 @@ describe(LinkedList, () => {
 
     expect(linkedList.elementAt(3)).toBeUndefined();
   });
+
+  it('should have a removeAt method', () => {
+    expect(linkedList.removeAt).toBeInstanceOf(Function);
+  });
+
+  it('should reduce the length of the linked list by one', () => {
+    linkedList.add(1);
+    linkedList.add(2);
+    linkedList.add(3);
+
+    linkedList.removeAt(1);
+    expect(linkedList.size()).toEqual(2);
+  });
+
+  it('should remove the elemnt at the specified index', () => {
+    linkedList.add(1);
+    linkedList.add(2);
+    linkedList.add(3);
+
+    linkedList.removeAt(1);
+    expect(linkedList.head().element).toEqual(1);
+    expect(linkedList.head().next.element).toEqual(3);
+  });
+
+  it('it should remove when only one element', () => {
+    linkedList.add(1);
+
+    expect(linkedList.removeAt(0)).toEqual(1);
+    expect(linkedList.size()).toEqual(0);
+  });
+
+  it('should return the element removed by the method', () => {
+    linkedList.add(1);
+    linkedList.add(2);
+    linkedList.add(3);
+
+    expect(linkedList.removeAt(1)).toEqual(2);
+  });
+
+  it('should return null if the index is less than 0', () => {
+    linkedList.add(1);
+    linkedList.add(2);
+    linkedList.add(3);
+
+    expect(linkedList.removeAt(-2)).toEqual(null);
+  });
+
+
+  it('should return null if the index is greater than last index', () => {
+    linkedList.add(1);
+    linkedList.add(2);
+    linkedList.add(3);
+
+    expect(linkedList.removeAt(4)).toEqual(null);
+    expect(linkedList.size()).toEqual(3);
+  });
 });
