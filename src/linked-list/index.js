@@ -80,6 +80,30 @@ class LinkedList {
 
     return current ? current.element : undefined;
   }
+
+  removeAt(index) {
+    if (index < 0 || index >= this.size()) return null;
+
+    this.length--;
+    let currentIndex = 0;
+    let current = this.head();
+    let prev;
+
+    while (currentIndex < index) {
+      prev = current;
+      current = current.next;
+      currentIndex++;
+    }
+
+    const { element } = current;
+    if (current === this.head()) {
+      this.cHead = current.next;
+    } else {
+      prev.next = current.next;
+    }
+
+    return element;
+  }
 }
 
 module.exports = LinkedList;
