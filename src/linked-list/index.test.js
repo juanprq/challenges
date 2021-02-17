@@ -194,4 +194,25 @@ describe(LinkedList, () => {
     expect(linkedList.removeAt(4)).toEqual(null);
     expect(linkedList.size()).toEqual(3);
   });
+
+  it('should have an addAt method', () => {
+    expect(linkedList.addAt).toBeInstanceOf(Function);
+  });
+
+  it('should #addAt increase the length of the list', () => {
+    linkedList.add(1);
+    linkedList.add(2);
+    linkedList.add(3);
+    linkedList.addAt(1, 5);
+
+    expect(linkedList.size()).toEqual(4);
+  });
+
+  it('should #addAt return false if was unable to add the element', () => {
+    linkedList.add(1);
+    linkedList.add(2);
+    linkedList.add(3);
+
+    expect(linkedList.addAt(4)).toBe(false);
+  });
 });
