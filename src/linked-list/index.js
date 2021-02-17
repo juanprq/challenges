@@ -104,6 +104,32 @@ class LinkedList {
 
     return element;
   }
+
+  addAt(index, element) {
+    if (index < 0 || index >= this.size()) return false;
+
+    this.length++;
+    let currentIndex = 0;
+    let current = this.head();
+    let prev;
+
+    while (currentIndex < index) {
+      prev = current;
+      current = current.next;
+      currentIndex++;
+    }
+
+    const newElement = new Node(element);
+    if (prev) {
+      prev.next = newElement;
+      newElement.next = current;
+    } else {
+      newElement.next = this.head();
+      this.cHead = newElement;
+    }
+
+    return true;
+  }
 }
 
 module.exports = LinkedList;
