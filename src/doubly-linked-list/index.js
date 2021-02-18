@@ -15,8 +15,7 @@ class DoublyLinkedList {
 
     if (this.tail) {
       this.tail.next = newNode;
-    }
-    if (this.head === null) {
+    } else {
       this.head = newNode;
     }
     this.tail = newNode;
@@ -31,12 +30,12 @@ class DoublyLinkedList {
 
     if (!current) return null;
 
-    if (current && current.prev) {
+    if (current.prev) {
       current.prev.next = current.next;
-    }
-    if (this.head === current) {
+    } else {
       this.head = current.next;
     }
+
     if (this.tail === current) {
       this.tail = current.prev;
     }
