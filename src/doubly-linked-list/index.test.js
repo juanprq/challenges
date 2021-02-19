@@ -68,9 +68,9 @@ describe('DoublyLinkedList', () => {
 
 
   it('should reverse the list', () => {
-    list.add(1);
-    list.add(2);
-    list.add(3);
+    doublyLinkedList.add(1);
+    doublyLinkedList.add(2);
+    doublyLinkedList.add(3);
 
     doublyLinkedList.reverse();
     expect(doublyLinkedList.head.data).toEqual(3);
@@ -79,9 +79,9 @@ describe('DoublyLinkedList', () => {
   });
 
   it('should maintain the correct references to next and prev', () => {
-    list.add(1);
-    list.add(2);
-    list.add(3);
+    doublyLinkedList.add(1);
+    doublyLinkedList.add(2);
+    doublyLinkedList.add(3);
 
     doublyLinkedList.reverse();
     expect(doublyLinkedList.head.prev).toBe(null);
