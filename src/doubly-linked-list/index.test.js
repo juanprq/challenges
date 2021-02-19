@@ -57,4 +57,35 @@ describe('DoublyLinkedList', () => {
     doublyLinkedList.remove(2);
     expect(doublyLinkedList.head.next).toBe(null);
   });
+
+  it('should have a reverse method', () => {
+    expect(doublyLinkedList.reverse).toBeInstanceOf(Function);
+  });
+
+  it('should return null reversing an empty linked list', () => {
+    expect(doublyLinkedList.reverse()).toEqual(null);
+  });
+
+
+  it('should reverse the list', () => {
+    list.add(1);
+    list.add(2);
+    list.add(3);
+
+    doublyLinkedList.reverse();
+    expect(doublyLinkedList.head.data).toEqual(3);
+    expect(doublyLinkedList.head.next.data).toEqual(2);
+    expect(doublyLinkedList.head.next.next.data).toEqual(1);
+  });
+
+  it('should maintain the correct references to next and prev', () => {
+    list.add(1);
+    list.add(2);
+    list.add(3);
+
+    doublyLinkedList.reverse();
+    expect(doublyLinkedList.head.prev).toBe(null);
+    expect(doublyLinkedList.head.next.prev.data).toEqual(3);
+    expect(doublyLinkedList.head.next.next.prev.data).toEqual(2);
+  });
 });
