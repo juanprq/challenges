@@ -43,6 +43,24 @@ class DoublyLinkedList {
     current.next = null;
     current.prev = null;
   }
+
+  reverse() {
+    if (!this.head) return null;
+
+    let current = this.head;
+
+    while (current) {
+      const aux = current.prev;
+      current.prev = current.next;
+      current.next = aux;
+
+      current = current.prev;
+    }
+
+    const aux = this.head;
+    this.head = this.tail;
+    this.tail = aux;
+  }
 }
 
 module.exports = DoublyLinkedList;
