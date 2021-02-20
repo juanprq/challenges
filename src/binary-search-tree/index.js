@@ -23,13 +23,9 @@ class BinarySearchTree {
       return null;
     }
 
-    if (value <= currentNode.value) {
-      if (currentNode.left) return this.add(value, currentNode.left);
-      currentNode.left = newNode;
-    } else {
-      if (currentNode.right) return this.add(value, currentNode.right);
-      currentNode.right = newNode;
-    }
+    let nextNodeKey = value <= currentNode.value ? 'left' : 'right';
+    if (currentNode[nextNodeKey]) return this.add(value, currentNode[nextNodeKey]);
+    currentNode[nextNodeKey] = newNode;
   }
 }
 
