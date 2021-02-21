@@ -27,6 +27,28 @@ class BinarySearchTree {
     if (currentNode[nextNodeKey]) return this.add(value, currentNode[nextNodeKey]);
     currentNode[nextNodeKey] = newNode;
   }
+
+  findMin() {
+    if (!this.root) return null;
+
+    let current = this.root;
+    while (current.left) {
+      current = current.left;
+    }
+
+    return current.value;
+  }
+
+  findMax() {
+    if (!this.root) return null;
+
+    let current = this.root;
+    while (current.right) {
+      current = current.right;
+    }
+
+    return current.value;
+  }
 }
 
 module.exports = BinarySearchTree;
