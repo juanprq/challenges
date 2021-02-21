@@ -35,4 +35,37 @@ describe('BinarySearchTree', () => {
     expect(binarySearchTree.root.right.left).toBe(null);
     expect(binarySearchTree.root.right.right).toBe(null);
   });
+
+  it('should have a findMin method', () => {
+    expect(binarySearchTree.findMin).toBeInstanceOf(Function);
+  });
+
+  it('should have a findMax method', () => {
+    expect(binarySearchTree.findMax).toBeInstanceOf(Function);
+  });
+
+  it('should return the minium value of the tree', () => {
+    binarySearchTree.add(1);
+    binarySearchTree.add(1);
+    binarySearchTree.add(3);
+    binarySearchTree.add(4);
+    binarySearchTree.add(5);
+
+    expect(binarySearchTree.findMin()).toEqual(1);
+  });
+
+  it('should return the maximum value of the tree', () => {
+    binarySearchTree.add(1);
+    binarySearchTree.add(1);
+    binarySearchTree.add(3);
+    binarySearchTree.add(4);
+    binarySearchTree.add(5);
+
+    expect(binarySearchTree.findMax()).toEqual(5);
+  });
+
+  it('should return null if an empty tree', () => {
+    expect(binarySearchTree.findMin()).toBe(null);
+    expect(binarySearchTree.findMax()).toBe(null);
+  });
 });
