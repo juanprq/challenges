@@ -49,6 +49,16 @@ class BinarySearchTree {
 
     return current.value;
   }
+
+  isPresent(value) {
+    let current = this.root;
+
+    while (current && current.value !== value) {
+      current = value <= current.value ? current.left : current.right;
+    }
+
+    return !!current;
+  }
 }
 
 module.exports = BinarySearchTree;
