@@ -1,5 +1,3 @@
-module.exports.displayTree = tree => console.log(JSON.stringify(tree, null, 2));
-
 class Node {
   left = null;
   right = null;
@@ -62,3 +60,5 @@ class BinarySearchTree {
 }
 
 module.exports = BinarySearchTree;
+module.exports.Node = Node;
+module.exports.displayTree = tree => console.log(JSON.stringify(tree, null, 2));
