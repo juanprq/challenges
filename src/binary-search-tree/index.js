@@ -57,6 +57,39 @@ class BinarySearchTree {
 
     return !!current;
   }
+
+  findMinHeight() {
+    const fn = (currentNode = this.root) => {
+      if (currentNode === null) return 0;
+
+      return 1 + Math.min(
+        fn(currentNode.left),
+        fn(currentNode.right),
+      );
+    };
+
+    return fn() - 1;
+  }
+
+  findMaxHeight() {
+    const fn = (currentNode = this.root) => {
+      if (currentNode === null) return 0;
+
+      return 1 + Math.max(
+        fn(currentNode.left),
+        fn(currentNode.right),
+      );
+    };
+
+    return fn() - 1;
+  }
+
+  isBalanced() {
+    const min = this.findMinHeight();
+    const max = this.findMaxHeight();
+
+    return max - min <= 1;
+  }
 }
 
 module.exports = BinarySearchTree;
