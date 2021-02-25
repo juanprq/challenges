@@ -90,6 +90,54 @@ class BinarySearchTree {
 
     return max - min <= 1;
   }
+
+  inorder() {
+    if (!this.root) return null;
+
+    const fn = (current = this.root) => {
+      if (!current) return [];
+
+      return [
+        ...fn(current.left),
+        current.value,
+        ...fn(current.right),
+      ];
+    }
+
+    return fn();
+  }
+
+  preorder() {
+    if (!this.root) return null;
+
+    const fn = (current = this.root) => {
+      if (!current) return [];
+
+      return [
+        current.value,
+        ...fn(current.left),
+        ...fn(current.right),
+      ];
+    }
+
+    return fn();
+  }
+
+  postorder() {
+    if (!this.root) return null;
+
+    const fn = (current = this.root) => {
+      if (!current) return [];
+
+      return [
+        ...fn(current.left),
+        ...fn(current.right),
+        current.value,
+      ];
+    }
+
+    return fn();
+  }
 }
 
 module.exports = BinarySearchTree;
