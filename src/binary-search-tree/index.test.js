@@ -142,4 +142,59 @@ describe('BinarySearchTree', () => {
 
     expect(binarySearchTree.isBalanced()).toBe(true);
   });
+
+  it('should have the inorder method', () => {
+    expect(binarySearchTree.inorder).toBeInstanceOf(Function);
+  });
+
+  it('should have the preorder method', () => {
+    expect(binarySearchTree.preorder).toBeInstanceOf(Function);
+  });
+
+  it('should have the postorder method', () => {
+    expect(binarySearchTree.postorder).toBeInstanceOf(Function);
+  });
+
+  it('should return an array for inorder traversal', () => {
+    binarySearchTree.add(2);
+    binarySearchTree.add(1);
+    binarySearchTree.add(3);
+    binarySearchTree.add(4);
+    binarySearchTree.add(5);
+    binarySearchTree.add(6);
+
+    const result = [1, 2, 3, 4, 5, 6];
+    expect(binarySearchTree.inorder()).toEqual(result);
+  });
+
+
+  it('should return an array for preorder traversal', () => {
+    binarySearchTree.add(2);
+    binarySearchTree.add(1);
+    binarySearchTree.add(3);
+    binarySearchTree.add(4);
+    binarySearchTree.add(5);
+    binarySearchTree.add(6);
+
+    const result = [2, 1, 3, 4, 5, 6];
+    expect(binarySearchTree.preorder()).toEqual(result);
+  });
+
+  it('should return an array for postorder traversal', () => {
+    binarySearchTree.add(2);
+    binarySearchTree.add(1);
+    binarySearchTree.add(3);
+    binarySearchTree.add(4);
+    binarySearchTree.add(5);
+    binarySearchTree.add(6);
+
+    const result = [1, 6, 5, 4, 3, 2];
+    expect(binarySearchTree.postorder()).toEqual(result);
+  });
+
+  it('should return null on empty tree', () => {
+    expect(binarySearchTree.inorder()).toBe(null);
+    expect(binarySearchTree.preorder()).toBe(null);
+    expect(binarySearchTree.postorder()).toBe(null);
+  });
 });
