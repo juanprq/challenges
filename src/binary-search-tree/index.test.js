@@ -224,11 +224,11 @@ describe('BinarySearchTree', () => {
     binarySearchTree.add(2);
     binarySearchTree.add(6);
     binarySearchTree.add(1);
-    binarySearchTree.add(2);
+    binarySearchTree.add(3);
     binarySearchTree.add(5);
     binarySearchTree.add(7);
 
-    const result = [7, 5, 3, 1, 6, 2, 4];
+    const result = [4, 6, 2, 7, 5, 3, 1];
     expect(binarySearchTree.reverseLevelOrder()).toEqual(result);
   });
 
