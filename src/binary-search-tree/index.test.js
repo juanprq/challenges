@@ -197,4 +197,46 @@ describe('BinarySearchTree', () => {
     expect(binarySearchTree.preorder()).toBe(null);
     expect(binarySearchTree.postorder()).toBe(null);
   });
+
+  it('should have a method called levelOrder', () => {
+    expect(binarySearchTree.levelOrder).toBeInstanceOf(Function);
+  });
+
+  it('should have a method called reverseLevelOrder', () => {
+    expect(binarySearchTree.reverseLevelOrder).toBeInstanceOf(Function);
+  });
+
+  it('should return an array of values explored in level order', () => {
+    binarySearchTree.add(4);
+    binarySearchTree.add(2);
+    binarySearchTree.add(6);
+    binarySearchTree.add(1);
+    binarySearchTree.add(3);
+    binarySearchTree.add(5);
+    binarySearchTree.add(7);
+
+    const result = [4, 2, 6, 1, 3, 5, 7];
+    expect(binarySearchTree.levelOrder()).toEqual(result);
+  });
+
+  it('should return an array of values explored in reverse level order',  () => {
+    binarySearchTree.add(4);
+    binarySearchTree.add(2);
+    binarySearchTree.add(6);
+    binarySearchTree.add(1);
+    binarySearchTree.add(2);
+    binarySearchTree.add(5);
+    binarySearchTree.add(7);
+
+    const result = [7, 5, 3, 1, 6, 2, 4];
+    expect(binarySearchTree.reverseLevelOrder()).toEqual(result);
+  });
+
+  it('should levelOrder return null if an empty tree', () => {
+    expect(binarySearchTree.levelOrder()).toBe(null);
+  });
+
+  it('should reverseLevelOrder return null if an empty tree', () => {
+    expect(binarySearchTree.reverseLevelOrder()).toBe(null);
+  });
 });
