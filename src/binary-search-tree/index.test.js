@@ -239,4 +239,32 @@ describe('BinarySearchTree', () => {
   it('should reverseLevelOrder return null if an empty tree', () => {
     expect(binarySearchTree.reverseLevelOrder()).toBe(null);
   });
+
+  it('should have the remove method', () => {
+    expect(binarySearchTree.remove).toBeInstanceOf(Function);
+  });
+
+  it(`should return true if the element doesn't exits`, () => {
+    binarySearchTree.add(2);
+    binarySearchTree.add(1);
+    binarySearchTree.add(3);
+
+    expect(binarySearchTree.remove(4)).toBe(null);
+  });
+
+  it('should set root to null if no children', () => {
+    binarySearchTree.add(2);
+
+    binarySearchTree.remove(2);
+    expect(binarySearchTree.root).toBe(null);
+  });
+
+  it('should remove leaf nodes from the tree', () => {
+    binarySearchTree.add(2);
+    binarySearchTree.add(1);
+    binarySearchTree.add(3);
+
+    binarySearchTree.remove(1);
+    expect(binarySearchTree.root.left).toBe(null);
+  });
 });
