@@ -267,4 +267,21 @@ describe('BinarySearchTree', () => {
     binarySearchTree.remove(1);
     expect(binarySearchTree.root.left).toBe(null);
   });
+
+  it('should remove a node with one child', () => {
+    binarySearchTree.add(1);
+    binarySearchTree.add(2);
+    binarySearchTree.add(3);
+
+    binarySearchTree.remove(2);
+    expect(binarySearchTree.root.right.value).toEqual(3);
+  });
+
+  it('should remove the root node and set the child as root', () => {
+    binarySearchTree.add(1);
+    binarySearchTree.add(2);
+
+    binarySearchTree.remove(1);
+    expect(binarySearchTree.root.value).toEqual(2);
+  });
 });
