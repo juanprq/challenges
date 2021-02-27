@@ -170,6 +170,28 @@ class BinarySearchTree {
 
     return result;
   }
+
+  remove(value) {
+    let current = this.root;
+    let parent;
+
+    while (current && current.value !== value) {
+      parent = current;
+      const key = value < current.value ? 'left' : 'right';
+      current = current[key];
+    }
+
+    if (!current) return null;
+    if (current === this.root) {
+      this.root = null;
+    } else {
+
+      const key = value < parent.value ? 'left' : 'right';
+      parent[key] = null;
+    }
+
+    return current;
+  }
 }
 
 module.exports = BinarySearchTree;
