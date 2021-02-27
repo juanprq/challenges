@@ -179,15 +179,16 @@ class BinarySearchTree {
       parent = current;
       const key = value < current.value ? 'left' : 'right';
       current = current[key];
+
     }
 
     if (!current) return null;
-    if (current === this.root) {
-      this.root = null;
-    } else {
 
+    if (current === this.root) {
+      this.root = current.left || current.right;
+    } else {
       const key = value < parent.value ? 'left' : 'right';
-      parent[key] = null;
+      parent[key] = current.left || current.right;
     }
 
     return current;
