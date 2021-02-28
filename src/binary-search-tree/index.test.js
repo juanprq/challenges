@@ -284,4 +284,30 @@ describe('BinarySearchTree', () => {
     binarySearchTree.remove(1);
     expect(binarySearchTree.root.value).toEqual(2);
   });
+
+  it('should remove the root in a tree with two nodes and set the second to be the root', () => {
+    binarySearchTree.add(2);
+    binarySearchTree.add(1);
+    binarySearchTree.add(3);
+
+    binarySearchTree.remove(2);
+    expect(binarySearchTree.root.value).toEqual(3);
+    expect(binarySearchTree.root.left.value).toEqual(1);
+  });
+
+  it('should remove the node with two children while remaining a binary search tree structure', () => {
+    binarySearchTree.add(5);
+    binarySearchTree.add(10);
+    binarySearchTree.add(8);
+    binarySearchTree.add(12);
+    binarySearchTree.add(6);
+    binarySearchTree.add(9);
+    binarySearchTree.add(11);
+    binarySearchTree.add(13);
+
+    binarySearchTree.remove(10);
+    expect(binarySearchTree.root.right.value).toEqual(12);
+    expect(binarySearchTree.root.right.left.value).toEqual(11);
+    expect(binarySearchTree.root.right.left.left.value).toEqual(8);
+  });
 });
