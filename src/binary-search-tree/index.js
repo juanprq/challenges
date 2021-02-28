@@ -1,3 +1,5 @@
+const displayTree = tree => console.log(JSON.stringify(tree, null, 2));
+
 class Node {
   left = null;
   right = null;
@@ -184,12 +186,32 @@ class BinarySearchTree {
 
     if (!current) return null;
 
+    const children = (current.left ? 1 : 0) + (current.right ? 1 : 0);
     if (current === this.root) {
-      this.root = current.left || current.right;
+      if (children > 1) {
+        current.right.left = current.left;
+        this.root = current.right;
+      } else {
+        this.root = current.left || current.right;
+      }
     } else {
-      const key = value < parent.value ? 'left' : 'right';
-      parent[key] = current.left || current.right;
+      if (children > 1) {
+        parent.right = current.right
+
+        let leftPosition = current.right.left;
+        while (leftPosition.left) {
+          leftPosition = leftPosition.left;
+        }
+
+        leftPosition.left = current.left;
+      } else {
+        const key = value < parent.value ? 'left' : 'right';
+        parent[key] = current.left || current.right;
+      }
     }
+
+    current.left = null;
+    current.right = null;
 
     return current;
   }
@@ -197,4 +219,4 @@ class BinarySearchTree {
 
 module.exports = BinarySearchTree;
 module.exports.Node = Node;
-module.exports.displayTree = tree => console.log(JSON.stringify(tree, null, 2));
+module.exports.displayTree = displayTree;
