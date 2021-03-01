@@ -215,6 +215,23 @@ class BinarySearchTree {
 
     return current;
   }
+
+  invert() {
+    if (!this.root) return null;
+
+    const traverse = (current = this.root) => {
+      if (!current) return;
+
+      const { left, right } = current;
+      current.left = right;
+      current.right = left;
+
+      traverse(left);
+      traverse(right);
+    }
+
+    return traverse();
+  }
 }
 
 module.exports = BinarySearchTree;
