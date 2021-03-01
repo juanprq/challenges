@@ -310,4 +310,23 @@ describe('BinarySearchTree', () => {
     expect(binarySearchTree.root.right.left.value).toEqual(11);
     expect(binarySearchTree.root.right.left.left.value).toEqual(8);
   });
+
+  it('should have a method called invert', () => {
+    expect(binarySearchTree.invert).toBeInstanceOf(Function);
+  });
+
+  it('should invert correctly the tree structure', () => {
+    binarySearchTree.add(2);
+    binarySearchTree.add(1);
+    binarySearchTree.add(3);
+
+    binarySearchTree.invert();
+    expect(binarySearchTree.root.value).toEqual(2);
+    expect(binarySearchTree.root.left.value).toEqual(3);
+    expect(binarySearchTree.root.right.value).toEqual(1);
+  });
+
+  it('should invert return null if the tree is empty', () => {
+    expect(binarySearchTree.invert()).toBe(null);
+  });
 });
