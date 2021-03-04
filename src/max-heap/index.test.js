@@ -56,6 +56,6 @@ describe('MaxHeap', () => {
     maxHeap.insert(1);
 
     expect(maxHeap.remove()).toEqual(10);
-    expect(maxHeap.print()).toEqual([9, 8, 7, 6, 5, 4, 3, 2, 1]);
+    expect(maxHeap.print()).toEqual([9, 7, 8, 3, 6, 5, 4, 1, 2]);
   });
 });
