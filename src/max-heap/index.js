@@ -1,15 +1,15 @@
 class MaxHeap {
-  values = [null];
+  heap = [null];
 
   insert(value) {
-    let index = this.values.length;
+    let index = this.heap.length;
     let parentIndex = Math.floor(index / 2);
-    this.values.push(value);
+    this.heap.push(value);
 
-    while (parentIndex > 0 && this.values[parentIndex] < value) {
-      const aux = this.values[index];
-      this.values[index] = this.values[parentIndex];
-      this.values[parentIndex] = aux;
+    while (parentIndex > 0 && this.heap[parentIndex] < value) {
+      const aux = this.heap[index];
+      this.heap[index] = this.heap[parentIndex];
+      this.heap[parentIndex] = aux;
 
       index = parentIndex;
       parentIndex = Math.floor(index / 2);
@@ -17,24 +17,24 @@ class MaxHeap {
   }
 
   remove() {
-    const result = this.values[1];
-    this.values[1] = this.values[this.values.length - 1];
-    this.values.pop();
+    const result = this.heap[1];
+    this.heap[1] = this.heap[this.heap.length - 1];
+    this.heap.pop();
 
     let index = 1;
     while (
-      index < this.values.length - 1
+      index < this.heap.length - 1
       && (
-        this.values[index * 2] > this.values[index]
-        || this.values[index * 2 + 1] > this.values[index]
+        this.heap[index * 2] > this.heap[index]
+        || this.heap[index * 2 + 1] > this.heap[index]
       )
     ) {
-      const aux = this.values[index];
+      const aux = this.heap[index];
       let childIndex = index * 2;
-      if (this.values[childIndex] < this.values[childIndex + 1]) childIndex++;
+      if (this.heap[childIndex] < this.heap[childIndex + 1]) childIndex++;
 
-      this.values[index] = this.values[childIndex];
-      this.values[childIndex] = aux;
+      this.heap[index] = this.heap[childIndex];
+      this.heap[childIndex] = aux;
 
       index = childIndex;
     }
@@ -43,7 +43,7 @@ class MaxHeap {
   }
 
   print() {
-    return this.values.slice(1);
+    return this.heap.slice(1);
   }
 }
 
