@@ -1,4 +1,10 @@
-const incidenceMatrix = [];
+const incidenceMatrix = [
+  [1, 0, 0, 0],
+  [1, 1, 0, 1],
+  [0, 1, 1, 0],
+  [0, 0, 0, 1],
+  [0, 0, 1, 0],
+];
 
 describe('incidenceMatrix', () => {
   it('should have 5 nodes', () => {
