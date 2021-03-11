@@ -17,7 +17,7 @@ const bfs = (matrix, initialNode) => {
   });
 
   while(queue.length > 0) {
-    const { node, parent } = queue.pop();
+    const { node, parent } = queue.shift();
     visited[node] = true;
     result[node] = matrix[parent][node] + result[parent];
 
