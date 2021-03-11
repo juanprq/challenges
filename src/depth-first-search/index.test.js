@@ -14,7 +14,7 @@ describe('depthFirstSearch', () => {
     ];
     const root = 1;
 
-    expect(dfs(graph, root)).toEqual([0, 1, 2, 3]);
+    expect(dfs(graph, root).sort()).toEqual([0, 1, 2, 3]);
   });
 
   it('should return the reachable nodes', () => {
@@ -62,7 +62,7 @@ describe('depthFirstSearch', () => {
     ];
     const root = 3;
 
-    expect(dfs(graph, root)).toEqual([2, 3]);
+    expect(dfs(graph, root).sort()).toEqual([2, 3]);
   });
 
   it('should return the reachable nodes', () => {
