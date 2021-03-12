@@ -4,23 +4,18 @@
   <meta charset="UTF-8">
   <title>Show local weather</title>
   <link rel="stylesheet" href="./index.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons-wind.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
   <script src="./index.js"></script>
 </head>
 <body>
-  <div class="card">
+  <div id="card" class="card">
     <h1>
       Weatherito App
     </h1>
-    <div>
-      Calarcá, CO
-    </div>
-    <div>
-      22 °C
-    </div>
-    <i class="wi wi-night-sleet"></i>
-    <div class="loading">loading...</div>
+    <button id="toggle">
+      toggle
+    </button>
+    <div id="loading" class="loading">loading...</div>
   </div>
 </body>
 </html>
