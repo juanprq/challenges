@@ -1,16 +1,14 @@
 const getFinalOpenedDoors = (numDoors) => {
-  const doors = new Array(numDoors).fill(false);
+  let i = 1;
+  let ii = i * i;
 
-  for (let i = 1; i <= numDoors; i++) {
-    for (let j = 0; j <= numDoors; j += i) {
-      doors[j] = !doors[j];
-    }
+  let result = [];
+  while (ii <= numDoors) {
+    result.push(ii);
+
+    i++;
+    ii = i * i;
   }
-
-  const result = doors.reduce((accum, value, index) => {
-    if (!value) return accum;
-    return [...accum, index];
-  }, []);
 
   return result;
 };
