@@ -10,11 +10,13 @@ const isPalindrome = (string) => {
 
 const largestPalindromeProduct = (n) => {
   const max = Math.pow(10, n) - 1;
+  const min = Math.floor(max / 10 + 1) + 1;
 
-  for (let i = max * max; i > 9; i--) {
+  for (let i = max * max; i >= min; i--) {
     if (isPalindrome(`${i}`)) {
-      for (let j = max; j > 9; j--) {
-        if (i % j === 0 && i / j <= max) return i;
+      for (let j = max; j > min; j--) {
+        const div = i / j;
+        if (i % j === 0 && div <= max && div >= min) return i;
       }
     }
   }
