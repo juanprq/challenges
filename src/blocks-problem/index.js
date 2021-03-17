@@ -43,9 +43,10 @@ const findNearestBuilding = (blocks, building, currentIndex) => {
 const selectAppartment = (blocks, importantBuildings) => {
   const buildingDistances = blocks
     .map((block, i) => {
-      return importantBuildings
-        .map(building => findNearestBuilding(blocks, building, i))
-        .reduce((a, b) => a + b);
+      const distances = importantBuildings
+        .map(building => findNearestBuilding(blocks, building, i)) ;
+
+      return Math.max(...distances);
     }, 0);
 
   const { i } = buildingDistances
