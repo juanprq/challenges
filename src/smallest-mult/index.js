@@ -1,23 +1,18 @@
+const lcm = (a, b) => (a * b) / gcd(a, b);
+
+const gcd = (a, b) => {
+  if (b === 0) return a;
+  return gcd(b, a % b);
+}
+
 const smallestMult = (n) => {
-  let maxI = 1;
-  for (let j = 2; j < n; j++) {
-    maxI *= j;
+  let maxLCM = 1;
+
+  for (let i = 2; i <= n; i++) {
+    console.log(maxLCM);
+    maxLCM = lcm(maxLCM, i);
   }
-
-  let result;
-  let i = 1;
-  while (!result && i <= maxI) {
-    const currentValue = n * i;
-
-    for (let j = 2; j < n; j++) {
-      if (currentValue % j !== 0) break;
-      if (j === n - 1) result = currentValue;
-    }
-
-    i++;
-  }
-
-  return result;
-};
+  return maxLCM;
+}
 
 module.exports = smallestMult;
