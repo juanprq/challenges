@@ -3,10 +3,10 @@ class RequestCounter {
 
   ping(time) {
     this.pings.push(time);
+    const lowerBound = time - 3000;
+    this.pings = this.pings.filter(p => p >= lowerBound);
 
-    return this.pings
-      .filter(p => p >= time - 3000)
-      .length;
+    return this.pings.length;
   }
 }
 
