@@ -1,16 +1,31 @@
 const kDiff = (nums, k) => {
   const result = {};
+  // convert the nums into a count hash
+  const numsCount = nums
+    .reduce((accum, value) => {
+      return { ...accum, [value]: accum[value] ? accum[value] + 1 : 1 };
+    }, {});
 
-  // n ** 2
-  for (let i = 0; i < nums.length - 1; i++) {
-    for (let j = i + 1; j < nums.length; j++) {
-      const diff = Math.abs(nums[i] - nums[j]);
-      if (diff === k) {
-        const key = [nums[i], nums[j]].sort().join('-');
-        if (!result[key]) result[key] = [nums[i], nums[j]];
-      }
-    }
-  }
+  Object
+    .entries(numsCount)
+    .forEach(([numStr, count]) => {
+      const num = parseInt(numStr, 10);
+      const diffs = [
+        num + k,
+        num - k,
+      ];
+
+      diffs
+        .forEach(diff => {
+          if (
+            numsCount[diff]
+            && (num !== diff || count > 1)
+          ) {
+            const resultKey = [num, diff].sort().join('-');
+            if (!result[resultKey]) result[resultKey] = [num, diff];
+          }
+        });
+    });
 
   return Object.keys(result).length;
 };
