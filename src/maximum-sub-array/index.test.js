@@ -12,7 +12,7 @@ describe('maxSubArray', () => {
 
   it('should return 1', () => {
     const nums = [1];
-    expect(maxSubArray(nums)).toEqual(6);
+    expect(maxSubArray(nums)).toEqual(1);
   });
 
   it('should return 23', () => {
