@@ -1,17 +1,29 @@
 const maxSubArray = (nums) => {
-  let max = 0;
+  if (nums.length === 1) return nums[0];
 
-  for (let i = 0; i < nums.length; i++) {
+  const half = Math.floor(nums.length / 2);
+  const left = nums.slice(0, half);
+  const right = nums.slice(half);
 
-    let current = 0;
-    for (let j = i; j < nums.length; j++) {
-      current += nums[j];
+  console.log({ nums, left, right });
 
-      max = Math.max(max, current);
-    }
+  const best = Math.max(maxSubArray(left), maxSubArray(right));
+
+  let bestSumLeft = left[left.length - 1];
+  let sumLeft = left[left.length - 1];
+  for (let i = left.length - 2; i >= 0; i--) {
+    sumLeft += left[i];
+    Math.max(bestSumLeft, sumLeft);
   }
 
-  return max;
+  let bestSumRight = right[0];
+  let sumRight = right[0];
+  for (let i = 1; i < right.length; i++) {
+    sumRight += right[i];
+    Math.max(bestSumRight, sumRight);
+  }
+
+  return Math.max(best, bestSumLeft + bestSumRight);
 };
 
 module.exports = maxSubArray;
