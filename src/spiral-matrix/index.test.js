@@ -26,4 +26,14 @@ describe('spiralOrder', () => {
 
     expect(spiralOrder(input)).toEqual(output);
   });
+
+  it('should return spiral order', () => {
+    const input = [
+      [3],
+      [2],
+    ];
+    const output = [3, 2];
+
+    expect(spiralOrder(input)).toEqual(output);
+  });
 });
