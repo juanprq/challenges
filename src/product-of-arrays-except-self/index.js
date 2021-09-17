@@ -2,18 +2,15 @@ const productExceptSelf = (input) => {
   let headProduct = 1;
   const heads = [headProduct];
 
+  let tailProduct = 1;
+  const tails = [tailProduct]
+
   // for of heads
   for (let i = 0; i < input.length - 1; i++) {
     headProduct *= input[i];
     heads.push(headProduct);
-  }
 
-  // for tails
-  let tailProduct = 1;
-  const tails = [tailProduct]
-
-  for (let i = input.length - 1; i > 0; i--) {
-    tailProduct *= input[i];
+    tailProduct *= input[input.length - i - 1];
     tails.push(tailProduct);
   }
 
